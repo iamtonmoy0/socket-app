@@ -9,6 +9,11 @@ const io = new Server(server);
 
 io.on("connection", (socket) => {
   console.log("new user connected");
+
+  socket.on("chat", (data) => {
+    // console.log(data);
+    io.emit("msgShow", data);
+  });
 });
 
 app.get("/", (req, res) => {
